@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" 
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.hoho.user.dao.UserAccountMapper">
+
+    <resultMap id="UserAccountMap" type="com.hoho.user.entity.UserAccount">
+        <result property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <result property="userId" column="user_id"/>
+        <result property="roleId" column="role_id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+    
+    <sql id="columns">
+        <![CDATA[
+        id, username, password, user_id, role_id, create_time, update_time
+        ]]>
+    </sql>
+    
+    <sql id="where">
+        <where>
+           <if test="@Ognl@isNotEmpty(id)">
+                AND id = #{id}
+            </if>
+           <if test="@Ognl@isNotEmpty(username)">
+                AND username = #{username}
+            </if>
+           <if test="@Ognl@isNotEmpty(password)">
+                AND password = #{password}
+            </if>
+           <if test="@Ognl@isNotEmpty(userId)">
+                AND user_id = #{userId}
+            </if>
+           <if test="@Ognl@isNotEmpty(roleId)">
+                AND role_id = #{roleId}
+            </if>
+           <if test="@Ognl@isNotEmpty(createTimeBegin)">
+                AND create_time >= #{createTimeBegin}
+           </if>
+           <if test="@Ognl@isNotEmpty(createTimeEnd)">
+                AND create_time &lt;= #{createTimeEnd}
+           </if>
+           <if test="@Ognl@isNotEmpty(updateTimeBegin)">
+                AND update_time >= #{updateTimeBegin}
+           </if>
+           <if test="@Ognl@isNotEmpty(updateTimeEnd)">
+                AND update_time &lt;= #{updateTimeEnd}
+           </if>
+        </where>
+    </sql>
+    
+    <select id="get" resultMap="UserAccountMap">
+        SELECT <include refid="columns" />
+        <![CDATA[
+            FROM
+                user_account
+            WHERE 
+                id = #{id} 
+        ]]>
+    </select> 
+
+    <insert id="save" useGeneratedKeys="true" keyProperty="id">
+        <![CDATA[
+            INSERT INTO user_account (
+                id,
+                username,
+                password,
+                user_id,
+                role_id,
+                create_time,
+                update_time
+            ) VALUES (
+                #{id},
+                #{username},
+                #{password},
+                #{userId},
+                #{roleId},
+                #{createTime},
+                #{updateTime}
+            )
+        ]]>
+    </insert>
+    
+    <update id="update">
+        	UPDATE
+                user_account
+            <set>
+                <if test="username != null">
+                	<![CDATA[ username = #{username} ]]>,
+                </if>
+                <if test="password != null">
+                	<![CDATA[ password = #{password} ]]>,
+                </if>
+                <if test="userId != null">
+                	<![CDATA[ user_id = #{userId} ]]>,
+                </if>
+                <if test="roleId != null">
+                	<![CDATA[ role_id = #{roleId} ]]>,
+                </if>
+                <if test="createTime != null">
+                	<![CDATA[ create_time = #{createTime} ]]>,
+                </if>
+                <if test="updateTime != null">
+                	<![CDATA[ update_time = #{updateTime} ]]>
+                </if>
+            </set>
+            WHERE
+                id = #{id} 
+    </update>
+    
+    <delete id="delete">
+        <![CDATA[
+            DELETE
+            FROM
+                user_account
+        ]]>
+        <include refid="where"/>
+    </delete>
+    
+</mapper>
+

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" 
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.hoho.user.dao.UserMapper">
+
+    <resultMap id="UserMap" type="com.hoho.user.entity.User">
+        <result property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="sex" column="sex"/>
+        <result property="province" column="province"/>
+        <result property="city" column="city"/>
+        <result property="email" column="email"/>
+        <result property="headImgUrl" column="head_img_url"/>
+        <result property="remark" column="remark"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="updatePerson" column="update_person"/>
+    </resultMap>
+    
+    <sql id="columns">
+        <![CDATA[
+        id, username, sex, province, city, email, head_img_url, remark, create_time, update_time, update_person
+        ]]>
+    </sql>
+    
+    <sql id="where">
+        <where>
+           <if test="@Ognl@isNotEmpty(id)">
+                AND id = #{id}
+            </if>
+           <if test="@Ognl@isNotEmpty(username)">
+                AND username = #{username}
+            </if>
+           <if test="@Ognl@isNotEmpty(sex)">
+                AND sex = #{sex}
+            </if>
+           <if test="@Ognl@isNotEmpty(province)">
+                AND province = #{province}
+            </if>
+           <if test="@Ognl@isNotEmpty(city)">
+                AND city = #{city}
+            </if>
+           <if test="@Ognl@isNotEmpty(email)">
+                AND email = #{email}
+            </if>
+           <if test="@Ognl@isNotEmpty(headImgUrl)">
+                AND head_img_url = #{headImgUrl}
+            </if>
+           <if test="@Ognl@isNotEmpty(remark)">
+                AND remark = #{remark}
+            </if>
+           <if test="@Ognl@isNotEmpty(createTimeBegin)">
+                AND create_time >= #{createTimeBegin}
+           </if>
+           <if test="@Ognl@isNotEmpty(createTimeEnd)">
+                AND create_time &lt;= #{createTimeEnd}
+           </if>
+           <if test="@Ognl@isNotEmpty(updateTimeBegin)">
+                AND update_time >= #{updateTimeBegin}
+           </if>
+           <if test="@Ognl@isNotEmpty(updateTimeEnd)">
+                AND update_time &lt;= #{updateTimeEnd}
+           </if>
+           <if test="@Ognl@isNotEmpty(updatePerson)">
+                AND update_person = #{updatePerson}
+            </if>
+        </where>
+    </sql>
+    
+    <select id="get" resultMap="UserMap">
+        SELECT <include refid="columns" />
+        <![CDATA[
+            FROM
+                user
+            WHERE 
+                id = #{id} 
+        ]]>
+    </select>
+
+    <insert id="save" useGeneratedKeys="true" keyProperty="id">
+        <![CDATA[
+            INSERT INTO user (
+                id,
+                username,
+                sex,
+                province,
+                city,
+                email,
+                head_img_url,
+                remark,
+                create_time,
+                update_time,
+                update_person
+            ) VALUES (
+                #{id},
+                #{username},
+                #{sex},
+                #{province},
+                #{city},
+                #{email},
+                #{headImgUrl},
+                #{remark},
+                #{createTime},
+                #{updateTime},
+                #{updatePerson}
+            )
+        ]]>
+    </insert>
+    
+    <update id="update">
+        	UPDATE
+                user
+            <set>
+                <if test="username != null">
+                	<![CDATA[ username = #{username} ]]>,
+                </if>
+                <if test="sex != null">
+                	<![CDATA[ sex = #{sex} ]]>,
+                </if>
+                <if test="province != null">
+                	<![CDATA[ province = #{province} ]]>,
+                </if>
+                <if test="city != null">
+                	<![CDATA[ city = #{city} ]]>,
+                </if>
+                <if test="email != null">
+                	<![CDATA[ email = #{email} ]]>,
+                </if>
+                <if test="headImgUrl != null">
+                	<![CDATA[ head_img_url = #{headImgUrl} ]]>,
+                </if>
+                <if test="remark != null">
+                	<![CDATA[ remark = #{remark} ]]>,
+                </if>
+                <if test="createTime != null">
+                	<![CDATA[ create_time = #{createTime} ]]>,
+                </if>
+                <if test="updateTime != null">
+                	<![CDATA[ update_time = #{updateTime} ]]>,
+                </if>
+                <if test="updatePerson != null">
+                	<![CDATA[ update_person = #{updatePerson} ]]>
+                </if>
+            </set>
+            WHERE
+                id = #{id} 
+    </update>
+    
+    <delete id="delete">
+        <![CDATA[
+            DELETE
+            FROM
+                user
+        ]]>
+        <include refid="where"/>
+    </delete>
+    
+</mapper>
+

@@ -1,0 +1,74 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>hoho</groupId>
+    <artifactId>user-parent</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+	<relativePath>../user-parent</relativePath>
+  </parent>
+  <artifactId>hoho-user-core</artifactId>
+  <packaging>jar</packaging>
+  <name>hoho-user-core</name>
+  <url>http://maven.apache.org</url>
+  
+<dependencies>
+	<!-- spring core container-->
+   <dependency>
+       <groupId>org.springframework</groupId>
+       <artifactId>spring-context</artifactId>
+   </dependency>
+   <dependency>
+       <groupId>org.springframework</groupId>
+       <artifactId>spring-beans</artifactId>
+   </dependency>
+   <dependency>
+       <groupId>org.springframework</groupId>
+       <artifactId>spring-core</artifactId>
+   </dependency>
+   <dependency>
+       <groupId>org.springframework</groupId>
+       <artifactId>spring-expression</artifactId>
+   </dependency>
+   <!-- spring aop -->
+   <dependency>
+       <groupId>org.springframework</groupId>
+       <artifactId>spring-aop</artifactId>
+   </dependency>
+   <!-- spring aspects -->
+   <dependency>
+       <groupId>org.springframework</groupId>
+       <artifactId>spring-aspects</artifactId>
+   </dependency>
+   <!-- spring test -->
+   <dependency>
+       <groupId>org.springframework</groupId>
+       <artifactId>spring-test</artifactId>
+   </dependency>
+   <!-- spring 提供对DAO的支持 -->
+   <dependency>
+       <groupId>org.springframework</groupId>
+       <artifactId>spring-tx</artifactId>
+   </dependency>
+   <dependency>
+       <groupId>org.springframework</groupId>
+       <artifactId>spring-jdbc</artifactId>
+   </dependency>
+   
+   <!-- using Log4j -->
+   <dependency>
+       <groupId>log4j</groupId>
+       <artifactId>log4j</artifactId>
+       <version>1.2.14</version>
+   </dependency>
+   
+   <!-- using Junit4 -->
+   <dependency>
+  		<groupId>junit</groupId>
+  		<artifactId>junit</artifactId>
+  		<version>4.12</version>
+  		<scope>test</scope>
+   </dependency>
+</dependencies>
+
+</project>
