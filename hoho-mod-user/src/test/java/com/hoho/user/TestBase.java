@@ -3,10 +3,12 @@ package com.hoho.user;
 import java.io.IOException;
 import org.junit.Test;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
+import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
+import org.springframework.transaction.annotation.Transactional;
 
 @ContextConfiguration(locations = {"classpath*:/META-INF/spring/applicationContext.xml"})
-public class TestBase extends AbstractJUnit4SpringContextTests {
+@Transactional
+public class TestBase extends AbstractTransactionalJUnit4SpringContextTests {
 
   @Test
   public void run() throws IOException {
