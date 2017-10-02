@@ -10,7 +10,7 @@
 
 </head>
 <body>
-	<h1>你好，世界！</h1>
+	<h1>你好，欢迎来到我的世界！</h1>
 <script src="<%=request.getContextPath() %>/js/layui/layui.js"></script>	
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script src="<%=request.getContextPath() %>/js/bootstrap/bootstrap.min.js"></script>

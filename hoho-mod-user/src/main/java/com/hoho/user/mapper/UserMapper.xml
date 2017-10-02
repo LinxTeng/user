@@ -153,7 +153,8 @@
             FROM
                 user
         ]]>
-        <include refid="where"/>
+        WHERE
+                id = #{id}
     </delete>
     
 </mapper>

@@ -54,20 +54,41 @@
        <groupId>org.springframework</groupId>
        <artifactId>spring-jdbc</artifactId>
    </dependency>
+   <dependency>
+       <groupId>org.springframework</groupId>
+       <artifactId>spring-orm</artifactId>
+   </dependency>
    
-   <!-- using Log4j -->
+   <!-- mysql-driver -->
+   <dependency>
+   		<groupId>mysql</groupId>
+    	<artifactId>mysql-connector-java</artifactId>
+    </dependency>
+    
+   <!-- mybatis -->
+    <dependency>
+  		<groupId>org.mybatis</groupId>
+  		<artifactId>mybatis-spring</artifactId>
+	</dependency>
+   
+   <!-- Using SLF4J with Log4j -->
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>jcl-over-slf4j</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-log4j12</artifactId>
+    </dependency>
    <dependency>
        <groupId>log4j</groupId>
        <artifactId>log4j</artifactId>
-       <version>1.2.14</version>
    </dependency>
    
    <!-- using Junit4 -->
    <dependency>
   		<groupId>junit</groupId>
   		<artifactId>junit</artifactId>
-  		<version>4.12</version>
-  		<scope>test</scope>
    </dependency>
 </dependencies>
 
