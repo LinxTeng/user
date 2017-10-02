@@ -5,7 +5,6 @@
 package com.hoho.user.service.impl;
 
 import org.springframework.stereotype.Service;
-
 import com.hoho.user.service.UserAccountService;
 
 
@@ -18,8 +17,8 @@ import com.hoho.user.service.UserAccountService;
  */
 @Service("userAccountService")
 public class UserAccountServiceImpl implements UserAccountService {
-    @Override
-    public void sayHollen() {
-        System.out.println("欢迎来到spring的世界");
-    }
+  @Override
+  public String sayHollen() {
+    return "欢迎来到spring的世界";
+  }
 }

@@ -12,5 +12,5 @@ package com.hoho.user.service;
  * @date 2017-04-17
  */
 public interface UserAccountService {
-    public void sayHollen();
+  public String sayHollen();
 }

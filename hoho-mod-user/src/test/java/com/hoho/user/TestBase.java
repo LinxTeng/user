@@ -7,13 +7,13 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
 import com.hoho.user.service.UserAccountService;
 
-@ContextConfiguration(locations = {"classpath*:/META-INF/spring/applicationContext.xml"})
+@ContextConfiguration(locations = { "classpath*:/META-INF/spring/applicationContext.xml" })
 public class TestBase extends AbstractJUnit4SpringContextTests {
-    @Autowired
-    UserAccountService userAccountService;
+	@Autowired
+	UserAccountService userAccountService;
 
-    @Test
-    public void aa() {
-        userAccountService.sayHollen();
-    }
+	@Test
+	public void aa() {
+		userAccountService.sayHollen();
+	}
 }
