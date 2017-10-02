@@ -23,7 +23,7 @@ public class UserDto {
   /**
    * 主键列 自增键
    */
-  private Integer id;
+  private Long id;
 
   /**
    * 
@@ -108,11 +108,11 @@ public class UserDto {
 
 
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-  public Integer getId() {
+  public Long getId() {
     return this.id;
   }
 

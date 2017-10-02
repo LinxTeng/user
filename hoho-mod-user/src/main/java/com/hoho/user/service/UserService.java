@@ -13,5 +13,18 @@ import com.hoho.user.dto.UserDto;
  * @date 2017-04-17
  */
 public interface UserService {
-  public UserDto get(Long id);
+  /** 根据主键查找 */
+  UserDto get(Object id);
+
+  /** 用jdbc查询 */
+  UserDto getUseJdbc(Long id);
+
+  /** 保存 */
+  UserDto save(UserDto user);
+
+  /** 更新操作 */
+  int update(UserDto user);
+
+  /** 删除 */
+  int delete(Object id);
 }

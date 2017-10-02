@@ -64,6 +64,12 @@
    		<groupId>mysql</groupId>
     	<artifactId>mysql-connector-java</artifactId>
     </dependency>
+    
+   <!-- mybatis -->
+    <dependency>
+  		<groupId>org.mybatis</groupId>
+  		<artifactId>mybatis-spring</artifactId>
+	</dependency>
    
    <!-- Using SLF4J with Log4j -->
     <dependency>

@@ -4,6 +4,7 @@
  */
 package com.hoho.user.dao;
 
+import com.hoho.user.entity.UserAccount;
 
 /**
  * UserAccount Dao 接口
@@ -12,5 +13,15 @@ package com.hoho.user.dao;
  * @date 2017-04-17
  */
 public interface UserAccountMapper {
+  /** 根据主键查找 */
+  int get(Object id);
 
+  /** 保存 */
+  int save(UserAccount userAccount);
+
+  /** 更新操作 */
+  int update(UserAccount userAccount);
+
+  /** 删除 */
+  int delete(Object id);
 }

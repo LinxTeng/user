@@ -11,9 +11,14 @@ public class UserServiceTest extends TestBase {
   UserService userService;
 
   @Test
-  public void testGet() {
-    UserDto user = userService.get(3L);
+  public void testUseJdbc() {
+    UserDto user = userService.getUseJdbc(3L);
     System.out.println("结果：" + user);
   }
 
+  @Test
+  public void testDelete() {
+    int ok = userService.delete(3);
+    System.out.println("删除结果" + ok);
+  }
 }
