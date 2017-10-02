@@ -54,6 +54,16 @@
        <groupId>org.springframework</groupId>
        <artifactId>spring-jdbc</artifactId>
    </dependency>
+   <dependency>
+       <groupId>org.springframework</groupId>
+       <artifactId>spring-orm</artifactId>
+   </dependency>
+   
+   <!-- mysql-driver -->
+   <dependency>
+   		<groupId>mysql</groupId>
+    	<artifactId>mysql-connector-java</artifactId>
+    </dependency>
    
    <!-- Using SLF4J with Log4j -->
     <dependency>

@@ -4,6 +4,7 @@
  */
 package com.hoho.user.service;
 
+import com.hoho.user.dto.UserDto;
 
 /**
  * User Service
@@ -12,5 +13,5 @@ package com.hoho.user.service;
  * @date 2017-04-17
  */
 public interface UserService {
-
+  public UserDto get(Long id);
 }
