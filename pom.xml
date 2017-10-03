@@ -18,6 +18,8 @@
 		<module>hoho-user-core</module>
 		<module>hoho-mod-user</module>
 		<module>hoho-mod-user-interface</module>
+		<module>hoho-mod-common</module>
+		<module>hoho-mod-common-interface</module>
 		<module>hoho-mod-job</module>
 		<module>hoho-web-user</module>
 	</modules>	
