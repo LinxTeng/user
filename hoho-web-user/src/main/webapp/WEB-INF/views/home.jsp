@@ -4,15 +4,22 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/layui/layui.css">
-<link href="<%=request.getContextPath() %>/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+<title>首页</title>
+<link rel="stylesheet" href="./layui/css/layui.css">
 
 </head>
 <body>
-	<h1>你好，欢迎来到我的世界！</h1>
-<script src="<%=request.getContextPath() %>/js/layui/layui.js"></script>	
+
+<script src="./layui/layui.js"></script>	
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-<script src="<%=request.getContextPath() %>/js/bootstrap/bootstrap.min.js"></script>
+
+<script>
+//一般直接写在一个js文件中
+layui.use(['layer', 'form'], function(){
+  var layer = layui.layer
+  ,form = layui.form;
+  layer.msg('Hello World');
+});
+</script> 
 </body>
 </html>

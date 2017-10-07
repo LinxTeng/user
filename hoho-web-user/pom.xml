@@ -7,9 +7,9 @@
     <version>1.0.0-SNAPSHOT</version>
 	<relativePath>../user-parent</relativePath>
   </parent>
-  <artifactId>hoho-web-manage</artifactId>
+  <artifactId>hoho-web-user</artifactId>
   <packaging>war</packaging>
-  <name>hoho-web-manage Maven Webapp</name>
+  <name>hoho-web-user Maven Webapp</name>
   
   <dependencies>
  	<dependency>

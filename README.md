@@ -8,3 +8,5 @@ mybatis配置：
 http://www.mybatis.org/mybatis-3/zh/index.html
 mail:
 https://javaee.github.io/javamail/
+前端ui工具：layui
+http://www.layui.com/doc/
