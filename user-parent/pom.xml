@@ -197,18 +197,33 @@
 	</dependencyManagement>
 	<build>
 		<pluginManagement>
-				<plugins>
-					<plugin>
-						<artifactId>maven-compiler-plugin</artifactId>
-						<version>2.3.2</version>
-						<inherited>true</inherited>
-						<configuration>
-							<source>1.8</source>
-							<target>1.8</target>
-							<encoding>UTF-8</encoding>
-						</configuration>
-					</plugin>
-				</plugins>
+			<plugins>
+				<!-- 定义jdk编译版本 -->
+				<plugin>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>2.3.2</version>
+					<inherited>true</inherited>
+					<configuration>
+						<source>1.8</source>
+						<target>1.8</target>
+						<encoding>UTF-8</encoding>
+					</configuration>
+				</plugin>
+				<!-- 使用UTF-8处理资源文件 -->
+				<plugin>
+					<artifactId>maven-resources-plugin</artifactId>
+					<configuration>
+						<encoding>UTF-8</encoding>
+					</configuration>
+				</plugin>
+				<!-- 定义是否要跳过单元测试 -->
+				<plugin>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<configuration>
+						<skipTests>true</skipTests>
+					</configuration>
+				</plugin>
+			</plugins>
 		</pluginManagement>
 	</build>
 	<repositories>
