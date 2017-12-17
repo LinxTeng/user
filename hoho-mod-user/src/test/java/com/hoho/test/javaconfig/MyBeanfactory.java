@@ -1,4 +1,4 @@
-package com.hoho.user.BaseJavaConfig;
+package com.hoho.test.javaconfig;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

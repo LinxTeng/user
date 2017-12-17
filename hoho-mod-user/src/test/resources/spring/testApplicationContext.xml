@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+	
+	<!-- 自定义作用域 -->
+	<bean class="org.springframework.beans.factory.config.CustomScopeConfigurer">
+        <property name="scopes">
+            <map>
+                <entry key="thread">
+                    <bean class="org.springframework.context.support.SimpleThreadScope"/>
+                </entry>
+            </map>
+        </property>
+    </bean>
+   
+   <bean id="childrenClass" class="com.hoho.test.xmlconfig.ChildrenClass"
+   		p:name="我的名字" parent="parentClass"
+   />
+   <!-- 重命名 -->
+   <alias name="childrenClass" alias="alichildrenClass"/>
+   
+   
+   <bean id="parentClass" class="com.hoho.test.xmlconfig.ParentClass">
+   		<property name="sex" value="我的性别"/>
+   </bean>
+   
+</beans>
