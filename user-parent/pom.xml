@@ -195,7 +195,26 @@
    			
 		</dependencies>
 	</dependencyManagement>
+	
+	<!-- 配置灵活构建参数 -->
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<properties>
+				<my.version>snapshot</my.version>
+			</properties>
+		</profile>
+	</profiles>
+	
 	<build>
+		<!-- 定义资源过滤 -->
+		<testResources>
+			<testResource>
+				<directory>src/test/resources</directory>
+				<filtering>true</filtering>
+			</testResource>
+		</testResources>
+		
 		<pluginManagement>
 			<plugins>
 				<!-- 定义jdk编译版本 -->
