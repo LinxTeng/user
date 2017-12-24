@@ -19,7 +19,7 @@
         </property>
     </bean>
    
-   <bean id="childrenClass" class="com.hoho.test.xmlconfig.ChildrenClass"
+   <bean id="childrenClass"  class="com.hoho.test.xmlconfig.ChildrenClass"
    		p:name="我的名字" parent="parentClass"
    />
    <!-- 重命名 -->
@@ -28,6 +28,21 @@
    
    <bean id="parentClass" class="com.hoho.test.xmlconfig.ParentClass">
    		<property name="sex" value="我的性别"/>
+   </bean>
+   
+   <bean id="commandMamager" class="com.hoho.test.xmlconfig.CommandMamager">
+   	<lookup-method name="createCommand" bean="command"/>
+   </bean>
+   
+   <bean id="command" class="com.hoho.test.xmlconfig.Command"></bean>
+   
+   <!-- 国际化资源配置 -->
+   <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+   		<property name="basenames">
+   			<list>
+   				<value>property/format</value>
+   			</list>
+   		</property>
    </bean>
    
 </beans>
