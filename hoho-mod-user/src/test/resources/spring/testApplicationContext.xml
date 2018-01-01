@@ -45,4 +45,26 @@
    		</property>
    </bean>
    
+   <!-- 属性配置器 -->
+   <bean id="parentType" class="com.hoho.test.validation.ParentType">
+   	<property name="baseType" value="我的名字"></property>
+   </bean>
+   <bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+   		<!-- 用这种方式绑定，或者用下面的方式
+   		<property name="customEditors">
+   			<map>
+   				<entry key="com.hoho.test.validation.BaseType" value="com.hoho.test.validation.BaseTypeEditor"></entry>
+   			</map>
+   		</property>
+   		 -->
+   		 <property name="propertyEditorRegistrars">
+   		 	<list>
+   		 		<ref bean="customerPropertyEditorRegisterars"/>
+   		 	</list>
+   		 </property>
+   </bean>
+   <bean id="customerPropertyEditorRegisterars" class="com.hoho.test.validation.CustomerPropertyEditorRegisterars"></bean>
+   
+   <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean"></bean>
+   
 </beans>
