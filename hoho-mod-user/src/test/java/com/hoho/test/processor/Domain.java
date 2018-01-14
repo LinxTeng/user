@@ -7,5 +7,9 @@ public class Domain {
     AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
     ctx.scan("com.hoho.test.processor");
     ctx.refresh();
+    MyBesiness myBesiness = ctx.getBean(MyBesiness.class);
+    myBesiness.doBesiness();
+    myBesiness.doBesiness();
+    myBesiness.doBesiness();
   }
 }
