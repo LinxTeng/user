@@ -1,9 +1,11 @@
 package com.hoho.test.aop;
 
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.DeclareParents;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.core.Ordered;
 import org.springframework.stereotype.Component;
@@ -46,7 +48,44 @@ public class ConcurrentOperationAspect implements Ordered {
 
   @Before("com.hoho.test.aop.ConcurrentOperationAspect.anyComponent()")
   public void before() {
-    System.out.println("before");
+    System.out.println("before234");
+  }
+
+
+  // @Pointcut("execution(* com.hoho.test.aop.Target.say(..))")
+  // public void sayString() {};
+
+  @Pointcut("execution(* com.hoho.test.aop.Target.say(..)) && args(say,..)")
+  public void combSayString(String say) {};
+
+
+  @After("com.hoho.test.aop.ConcurrentOperationAspect.combSayString(say)")
+  public void afterSayString(String say) {
+    System.out.println("拦截后要说的是：" + say);
+  }
+
+  // 或者直接在通知里面定义切点
+  @Before("execution(* com.hoho.test.aop.Target.say(..)) && args(say,..)")
+  public void beforeSayString(String say) {
+    System.out.println("拦截前要说的是：" + say);
+  }
+
+  // 或者around通知
+  @Around("execution(* com.hoho.test.aop.Target.say(..)) && args(say,..)")
+  public Object doBasicProfiling(ProceedingJoinPoint pjp, String say) throws Throwable {
+    System.out.println("拦截中要说的是：" + say);
+    Object retVal = pjp.proceed();
+    System.out.println("拦截中要说的是：" + say);
+    return retVal;
+  }
+
+  // 引入
+  @DeclareParents(value = "com.hoho.test.aop.*+", defaultImpl = DefaultUsageTracked.class)
+  public static UsageTracked mixin;
+
+  @Before("com.hoho.test.aop.ConcurrentOperationAspect.anTargetExecute() && this(usageTracked)")
+  public void recordUsage(UsageTracked usageTracked) {
+    usageTracked.incrementUseCount();
   }
 
 }

@@ -1,0 +1,9 @@
+<!DOCTYPE aspectj PUBLIC "-//AspectJ//DTD//EN" "http://www.eclipse.org/aspectj/dtd/aspectj.dtd">
+<aspectj>
+	<weaver>
+		<include within="com.hoho.test.aop.*"/>
+	</weaver>
+	<aspects>
+		<aspect name="com.hoho.test.aop.ProfilingAspect"></aspect>
+	</aspects>
+</aspectj>

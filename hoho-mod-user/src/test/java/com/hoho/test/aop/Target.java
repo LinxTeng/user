@@ -1,5 +1,6 @@
 package com.hoho.test.aop;
 
+import org.springframework.aop.framework.AopContext;
 import org.springframework.aop.framework.ProxyFactory;
 import org.springframework.stereotype.Component;
 import com.hoho.test.javaconfig.MyService;
@@ -19,6 +20,32 @@ public class Target {
     System.out.println("myExecute执行了");
   }
 
+  public void say(String aa) {
+    try {
+      Thread.sleep(1000);
+    } catch (InterruptedException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+    System.out.println(aa);
+  }
+
+  public void avage(Integer... aa) {
+    Integer sum = 0;
+    for (Integer a : aa) {
+      sum += a;
+    }
+    System.out.println("总数" + sum);
+  }
+
+  public void myCeption() throws Exception {
+    throw new Exception("我出错了");
+  }
+
+  public void foo() {
+    ((Target) AopContext.currentProxy()).say("你好");
+    // this.say("你好");
+  }
 
   public static void main(String[] args) {
     Target target = new Target();
@@ -26,8 +53,10 @@ public class Target {
     ProxyFactory di = new ProxyFactory();
     di.addAdvice(new LoggerExecute());
     di.setTarget(target);
+    di.setExposeProxy(true);
     Target proxy = (Target) di.getProxy();
-    proxy.execute();
-    proxy.execute2();
+    // proxy.execute();
+    // proxy.execute2();
+    proxy.foo();
   }
 }
