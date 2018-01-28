@@ -39,5 +39,12 @@
         <artifactId>greenmail</artifactId>
    </dependency>
    
+   <!-- 支付宝jdk -->
+   <dependency>
+		<groupId>com.alipay</groupId>
+		<artifactId>sdk-java</artifactId>
+		<version>20170411150054</version>
+   </dependency>
+   
   </dependencies>
 </project>
