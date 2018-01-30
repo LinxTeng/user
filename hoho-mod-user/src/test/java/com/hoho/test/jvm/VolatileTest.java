@@ -8,41 +8,26 @@ package com.hoho.test.jvm;
  * @author yunnex
  * @date 2018年1月30日
  */
-public class VolatileTest implements Runnable {
-    volatile boolean running = true;
-    public int a = 0;
+public class VolatileTest {
+    boolean running = true;
+    int a = 0;
 
     public static void main(String[] args) throws InterruptedException {
-        VolatileTest testValitate = new VolatileTest();
-        Thread threadA = new Thread(testValitate);
-        threadA.start();
-        Thread.currentThread().sleep(10);
-        testValitate.setRunning(false);
+        final VolatileTest testValitate = new VolatileTest();
+        Thread threada = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (testValitate.running) {
+                    testValitate.a++;
+                }
+            }
+        });
+        threada.start();
+        threada.sleep(10);
+        testValitate.running = false;
         while (true) {
-            Thread.currentThread().sleep(1000);
-            System.out.println(testValitate.getA());
+            threada.sleep(1000);
+            System.out.println(testValitate.a);
         }
-    }
-
-    @Override
-    public void run() {
-        while (running) {
-            a++;
-        }
-    }
-    public int getA() {
-        return a;
-    }
-
-    public void setA(int a) {
-        this.a = a;
-    }
-
-    public boolean isRunning() {
-        return running;
-    }
-
-    public void setRunning(boolean running) {
-        this.running = running;
     }
 }
