@@ -1,5 +1,4 @@
-# user
-用户管理系统
+传统架构的项目基于ssm搭建。
 
 参考文档：
 spring framework配置:spring mvc\spring ioc\spring data(jdbc)\email
