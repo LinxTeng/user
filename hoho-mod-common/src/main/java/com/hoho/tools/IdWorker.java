@@ -1,5 +1,9 @@
 package com.hoho.tools;
 
+/**
+ * 请参照：http://www.cnblogs.com/relucent/p/4955340.html<br>
+ * Twitter的分布式自增ID算法snowflake (Java版)
+ */
 public class IdWorker {
     private final static long twepoch = 1288834974657L;
 

@@ -46,5 +46,13 @@
 		<version>20170411150054</version>
    </dependency>
    
+   <dependency>
+   
+   <!-- google工具类 -->
+  <groupId>com.google.guava</groupId>
+  		<artifactId>guava</artifactId>
+  		<version>24.1-jre</version>
+  </dependency>
+   
   </dependencies>
 </project>

@@ -1,5 +1,7 @@
 package com.hoho.tools;
 
+import java.util.Date;
+
 public class JsonConsole {
     /*
      * 以json格式输出
@@ -44,5 +46,9 @@ public class JsonConsole {
             levelStr.append("\t");
         }
         return levelStr.toString();
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new Date().getTime());
     }
 }
