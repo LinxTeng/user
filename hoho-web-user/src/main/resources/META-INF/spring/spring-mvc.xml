@@ -10,7 +10,7 @@
         
     <mvc:annotation-driven/>
     <!-- spring使用用默认的Servlet来响应静态文件-->
-    <mvc:default-servlet-handler />
+    <mvc:default-servlet-handler/>
     
     <mvc:view-controller path="/" view-name="home"/>
     

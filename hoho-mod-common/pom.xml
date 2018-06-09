@@ -1,0 +1,58 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>hoho</groupId>
+    <artifactId>user-parent</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+	<relativePath>../user-parent</relativePath>
+  </parent>
+  <artifactId>hoho-mod-common</artifactId>
+  <packaging>jar</packaging>
+
+  <name>hoho-mod-common</name>
+  
+  <dependencies>
+  	<dependency>
+ 		<groupId>hoho</groupId>
+ 		<artifactId>hoho-user-core</artifactId>
+ 	</dependency>
+ 	
+    <dependency>
+ 		<groupId>hoho</groupId>
+ 		<artifactId>hoho-mod-common-interface</artifactId>
+ 	</dependency>
+ 	
+ 	<!-- using Junit4 -->
+   <dependency>
+  		<groupId>junit</groupId>
+  		<artifactId>junit</artifactId>
+   </dependency>
+   
+      <!-- email支持 -->
+   <dependency>
+        <groupId>com.sun.mail</groupId>
+        <artifactId>javax.mail</artifactId>
+   </dependency>
+   <dependency>
+   		<groupId>com.icegreen</groupId>
+        <artifactId>greenmail</artifactId>
+   </dependency>
+   
+   <!-- 支付宝jdk -->
+   <dependency>
+		<groupId>com.alipay</groupId>
+		<artifactId>sdk-java</artifactId>
+		<version>20170411150054</version>
+   </dependency>
+   
+   <dependency>
+   
+   <!-- google工具类 -->
+  <groupId>com.google.guava</groupId>
+  		<artifactId>guava</artifactId>
+  		<version>24.1-jre</version>
+  </dependency>
+   
+  </dependencies>
+</project>
