@@ -17,6 +17,7 @@
 	<modules>
 		<module>hoho-user-core</module>
 		<module>hoho-mod-user</module>
+		<module>hoho-mod-test</module>
 		<module>hoho-mod-user-interface</module>
 		<module>hoho-mod-common</module>
 		<module>hoho-mod-common-interface</module>

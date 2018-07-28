@@ -5,27 +5,31 @@ import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodType;
 
 public class MutiExtendTest {
-    public static class GrandFather {
+    class GrandFather {
         void thinking() {
             System.out.println("i am grandfather");
         }
     }
 
-    public static class Father extends GrandFather {
+    class Father extends GrandFather {
         void thinking() {
             System.out.println("i am father");
         }
-
     }
 
-    public static class Son extends Father {
+    class Son extends Father {
         void thinking() {
             // System.out.println("i am son");
             // 输出grandfather
             try {
                 MethodType mt = MethodType.methodType(void.class);
-                MethodHandle mh = MethodHandles.lookup().findSpecial(GrandFather.class, "thinking", mt, getClass());
-                mh.invoke(this);
+                // 还是会打印father
+                // MethodHandle mh = lookup().findSpecial(GrandFather.class, "thinking", mt,
+                // getClass());
+                // mh.invoke(this);
+                // 下面打印grandfather
+                MethodHandle mh = MethodHandles.lookup().findVirtual(GrandFather.class, "thinking", mt).bindTo(new GrandFather());
+                mh.invokeExact();
             } catch (Throwable e) {
                 // TODO: handle exception
             }
@@ -33,7 +37,6 @@ public class MutiExtendTest {
     }
 
     public static void main(String[] args) {
-        Son son = new Son();
-        son.thinking();
+        (new MutiExtendTest().new Son()).thinking();
     }
 }
