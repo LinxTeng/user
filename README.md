@@ -1,4 +1,4 @@
-#传统架构项目，基于ssm搭建。
+#传统架构项目，基于ssm搭建,用于学习测试使用！
 
 参考文档：
 spring framework配置:spring mvc\spring ioc\spring data(jdbc)\email
