@@ -14,12 +14,26 @@
 	<spring.version>4.3.7.RELEASE</spring.version>
 	<user.core.version>1.0.0-SNAPSHOT</user.core.version>
 	<user.interface.version>1.0.0-SNAPSHOT</user.interface.version>
+	<common.interface.version>1.0.0-SNAPSHOT</common.interface.version>
   </properties>
   <dependencyManagement>
 		<dependencies>	
+			<!-- spring test -->
+		   <dependency>
+			   <groupId>org.springframework</groupId>
+			   <artifactId>spring-test</artifactId>
+			   <version>${spring.version}</version>
+		   </dependency>
+		   
+			<!--spring core container -->
 			<dependency>
 			   <groupId>org.springframework</groupId>
 			   <artifactId>spring-context</artifactId>
+			   <version>${spring.version}</version>
+		   </dependency>
+		   <dependency>
+			   <groupId>org.springframework</groupId>
+			   <artifactId>spring-context-support</artifactId>
 			   <version>${spring.version}</version>
 		   </dependency>
 		   <dependency>
@@ -31,6 +45,7 @@
 			   <groupId>org.springframework</groupId>
 			   <artifactId>spring-core</artifactId>
 			   <version>${spring.version}</version>
+			   <!-- 为了兼容SLF4J -->
 			   <exclusions>
             		<exclusion>
                 		<groupId>commons-logging</groupId>
@@ -43,6 +58,7 @@
 			   <artifactId>spring-expression</artifactId>
 			   <version>${spring.version}</version>
 		   </dependency>
+		   
 		   <!-- spring aop -->
 		   <dependency>
 			   <groupId>org.springframework</groupId>
@@ -55,13 +71,20 @@
 			   <artifactId>spring-aspects</artifactId>
 			   <version>${spring.version}</version>
 		   </dependency>
-		   <!-- spring test -->
+		   <!-- spring instrumention -->
 		   <dependency>
 			   <groupId>org.springframework</groupId>
-			   <artifactId>spring-test</artifactId>
+			   <artifactId>spring-instrument</artifactId>
 			   <version>${spring.version}</version>
 		   </dependency>
-		   <!-- spring 提供对DAO的支持 -->
+		   <!-- spring messaging -->
+		   <dependency>
+			   <groupId>org.springframework</groupId>
+			   <artifactId>spring-messaging</artifactId>
+			   <version>${spring.version}</version>
+		   </dependency>
+		   
+		   <!-- spring Data Access -->
 		   <dependency>
 			   <groupId>org.springframework</groupId>
 			   <artifactId>spring-tx</artifactId>
@@ -77,6 +100,31 @@
        			<artifactId>spring-orm</artifactId>
        			<version>${spring.version}</version>
   			</dependency>
+  			
+  			<!-- web -->
+ 		   <dependency>
+		       <groupId>org.springframework</groupId>
+		       <artifactId>spring-web</artifactId>
+		       <version>${spring.version}</version>
+		   </dependency>
+		   <dependency>
+		       <groupId>org.springframework</groupId>
+		       <artifactId>spring-webmvc</artifactId>
+		       <version>${spring.version}</version>
+		   </dependency>
+		   <dependency>
+		       <groupId>org.springframework</groupId>
+		       <artifactId>spring-websocket</artifactId>
+		       <version>${spring.version}</version>
+		   </dependency>
+		   <dependency>
+		       <groupId>org.springframework</groupId>
+		       <artifactId>spring-webmvc-portlet</artifactId>
+		       <version>${spring.version}</version>
+		   </dependency>
+		   
+  			
+  			<!-- 其他 -->
   			<dependency>
    				<groupId>mysql</groupId>
     			<artifactId>mysql-connector-java</artifactId>
@@ -101,6 +149,12 @@
 				<artifactId>hoho-mod-user-interface</artifactId>
 				<version>${user.interface.version}</version>
 			</dependency>
+			
+			<dependency>
+ 				<groupId>hoho</groupId>
+ 				<artifactId>hoho-mod-common-interface</artifactId>
+ 				<version>${common.interface.version}</version>
+ 			</dependency>
 		   
 		   <!-- Using SLF4J with Log4j  -->
 		    <dependency>
@@ -126,22 +180,69 @@
 				<version>4.12</version>
 				<scope>test</scope>
 		   </dependency>
+		   
+		   <!-- email支持 -->
+  		   	<dependency>
+        		<groupId>com.sun.mail</groupId>
+        		<artifactId>javax.mail</artifactId>
+        		<version>1.6.0</version>
+   			</dependency>
+   			<dependency>
+		   		<groupId>com.icegreen</groupId>
+		        <artifactId>greenmail</artifactId>
+		        <version>1.5.2</version>
+		   </dependency>
+   			
 		</dependencies>
 	</dependencyManagement>
+	
+	<!-- 配置灵活构建参数 -->
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<properties>
+				<my.version>snapshot</my.version>
+			</properties>
+		</profile>
+	</profiles>
+	
 	<build>
+		<!-- 定义资源过滤 -->
+		<testResources>
+			<testResource>
+				<directory>src/test/resources</directory>
+				<filtering>true</filtering>
+			</testResource>
+		</testResources>
+		
 		<pluginManagement>
-				<plugins>
-					<plugin>
-						<artifactId>maven-compiler-plugin</artifactId>
-						<version>2.3.2</version>
-						<inherited>true</inherited>
-						<configuration>
-							<source>1.8</source>
-							<target>1.8</target>
-							<encoding>UTF-8</encoding>
-						</configuration>
-					</plugin>
-				</plugins>
+			<plugins>
+				<!-- 定义jdk编译版本 -->
+				<plugin>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>2.3.2</version>
+					<inherited>true</inherited>
+					<configuration>
+						<source>1.8</source>
+						<target>1.8</target>
+						<encoding>UTF-8</encoding>
+					</configuration>
+				</plugin>
+				<!-- 使用UTF-8处理资源文件 -->
+				<plugin>
+					<artifactId>maven-resources-plugin</artifactId>
+					<configuration>
+						<encoding>UTF-8</encoding>
+					</configuration>
+				</plugin>
+				<!-- 定义是否要跳过单元测试 -->
+				<plugin>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<configuration>
+						<skipTests>true</skipTests>
+					</configuration>
+				</plugin>
+			</plugins>
 		</pluginManagement>
 	</build>
 	<repositories>

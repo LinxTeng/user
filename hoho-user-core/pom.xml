@@ -19,6 +19,10 @@
        <artifactId>spring-context</artifactId>
    </dependency>
    <dependency>
+	   <groupId>org.springframework</groupId>
+	   <artifactId>spring-context-support</artifactId>
+   </dependency>
+   <dependency>
        <groupId>org.springframework</groupId>
        <artifactId>spring-beans</artifactId>
    </dependency>
@@ -30,6 +34,7 @@
        <groupId>org.springframework</groupId>
        <artifactId>spring-expression</artifactId>
    </dependency>
+   
    <!-- spring aop -->
    <dependency>
        <groupId>org.springframework</groupId>
@@ -40,6 +45,16 @@
        <groupId>org.springframework</groupId>
        <artifactId>spring-aspects</artifactId>
    </dependency>
+   <dependency>
+	   <groupId>org.springframework</groupId>
+	   <artifactId>spring-instrument</artifactId>
+	</dependency>
+   <!-- spring messaging -->
+   <dependency>
+	   <groupId>org.springframework</groupId>
+	   <artifactId>spring-messaging</artifactId>
+   </dependency>
+   
    <!-- spring test -->
    <dependency>
        <groupId>org.springframework</groupId>
