@@ -120,6 +120,7 @@ public class TimeClient {
 				}
 				// 异步读客户端请求消息到缓冲区。
 				if (key.isReadable()) {
+					// 无法预知应答流的大小，我们预分配1MB的缓冲区用于读取应答消息。
 					ByteBuffer readBuffer = ByteBuffer.allocate(1024);
 					int readBytes = sc.read(readBuffer);
 					if (readBytes > 0) {
