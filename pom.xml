@@ -15,6 +15,7 @@
   </properties>
   
 	<modules>
+        <module>user-parent</module>
 		<module>hoho-user-core</module>
 		<module>hoho-mod-user</module>
 		<module>hoho-mod-test</module>
