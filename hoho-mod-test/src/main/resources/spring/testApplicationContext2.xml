@@ -11,16 +11,16 @@
         http://www.springframework.org/schema/aop 
         http://www.springframework.org/schema/aop/spring-aop.xsd">
        
-       <bean id="target" class="com.hoho.test.aop.Target"></bean>
+       <bean id="target" class="com.linx.test.aop.Target"></bean>
        
-       <bean id="concurrentOperationAspect" class="com.hoho.test.aop.XmlConcurrentOperationAspect"></bean>
+       <bean id="concurrentOperationAspect" class="com.linx.test.aop.XmlConcurrentOperationAspect"></bean>
       
       <!--在schema中aspectj-autoproxy 这个不是必须的 ,能够对bean下面的@标识起作用
        <aop:aspectj-autoproxy />
       
        <aop:config>
        		<aop:aspect id="myAspect" ref="concurrentOperationAspect">
-       			<aop:pointcut id="myPoincut" expression="execution(* com.hoho.test.aop.Target.*(..))" />
+       			<aop:pointcut id="myPoincut" expression="execution(* Target.*(..))" />
        			<aop:before pointcut-ref="myPoincut" method="before"/>
        			<aop:after-throwing pointcut-ref="myPoincut" method="myEception"/>
        			
