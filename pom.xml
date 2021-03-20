@@ -16,13 +16,10 @@
   
 	<modules>
         <module>user-parent</module>
-		<module>hoho-user-core</module>
 		<module>hoho-mod-user</module>
 		<module>hoho-mod-test</module>
 		<module>hoho-mod-user-interface</module>
 		<module>hoho-mod-common</module>
-		<module>hoho-mod-common-interface</module>
-		<module>hoho-mod-job</module>
 		<module>hoho-web-user</module>
 	</modules>	
 </project>
