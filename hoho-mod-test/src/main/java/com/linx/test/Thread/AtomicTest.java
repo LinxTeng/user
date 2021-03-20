@@ -1,8 +1,10 @@
 package com.linx.test.Thread;
 
+import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicIntegerArray;
 import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.Supplier;
 
 public class AtomicTest {
 	static int[] value = new int[] { 1, 2, 3 };
@@ -31,6 +33,9 @@ public class AtomicTest {
 		User conan = new User("conan", 10);
 		System.out.println(a.getAndIncrement(conan));
 		System.out.println(a.get(conan));
+
+		Supplier a = ArrayList::new;
+		a.get();
 
 	}
 

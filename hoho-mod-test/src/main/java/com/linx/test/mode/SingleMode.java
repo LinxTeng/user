@@ -12,7 +12,7 @@ public class SingleMode {
 
 	// --------------------------------- 延迟加载模式，也叫懒汉模式
 	public static class MyObject {
-		public static Object obj;
+		private static Object obj;
 
 		public static Object getInstance() {
 			if (obj != null) {
