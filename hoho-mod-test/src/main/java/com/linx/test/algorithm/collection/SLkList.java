@@ -1,15 +1,19 @@
 package com.linx.test.algorithm.collection;
 
-public class LkList<T> {
+/**
+ * 单链表
+ * 注意：新增、删除某个位置的值，p需要指向头节点，其他可指向第一个节点。
+ * @param <T>
+ */
+public class SLkList<T> {
     Node<T> head; // 头节点
 
     private static class Node<T> { //链表节点
         private T data;
         private Node<T> next;//后继节点
-        private Node<T> prior;//前驱节点。双链表时使用
     }
 
-    public LkList() {//建立一个空链表
+    public SLkList() {//建立一个空链表
         head = new Node<>();
         head.next = null;
     }
@@ -26,7 +30,7 @@ public class LkList<T> {
         }
     }
 
-    public LkList(T[] list) {
+    public SLkList(T[] list) {
         //尾插入法建表
         head = new Node<>();//创建头节点
         Node<T> end = head;//end始终指向尾节点，开始时指向头节点
@@ -48,11 +52,11 @@ public class LkList<T> {
      * @return
      */
     public int length() {
-        Node<T> node = head.next;
+        Node<T> p = head.next;
         int n = 0;
-        while (node.next != null) {
+        while (p != null) {
             n++;
-            node = node.next;
+            p = p.next;
         }
         return n;
     }
@@ -61,10 +65,10 @@ public class LkList<T> {
      * 输出
      */
     public void display() {
-        Node<T> node = head.next;
-        while (node != null) {
-            System.out.printf("%s ", node.data);
-            node = node.next;
+        Node<T> p = head.next;
+        while (p != null) {
+            System.out.printf("%s ", p.data);
+            p = p.next;
         }
     }
 
@@ -74,28 +78,28 @@ public class LkList<T> {
      * @return
      */
     public T get(int i) {
-        Node<T> node = head;
+        Node<T> p = head;
         int j = 0;//循环变量, 我们要循环i次，此处j为物理位序，所以以0开头,当j = i 时，刚好循环i次逻辑位序。
-        while(j < i && node != null) {//下一个节点可能为null
+        while(j < i && p != null) {//下一个节点可能为null
             j++;
-            node = node.next;
+            p = p.next;
         }
-        if (node == null) {
+        if (p == null) {
             return null;
         } else {
-            return node.data;
+            return p.data;
         }
     }
 
     //获取某个值
     public int get(T elem) {
-        Node<T> node = head;
+        Node<T> p = head.next;
         int i = 1; //计数
-        while (node != null && node.data != elem) {
-            node = node.next;
+        while (p != null && p.data != elem) {
             i++;
+            p = p.next;
         }
-        if (node == null) {
+        if (p == null) {
             return 0;
         } else {
             return i;
@@ -117,7 +121,7 @@ public class LkList<T> {
         int j = 0;
         Node<T> p = head;//头节点不算到序位里。
         i--; //转化为物理序位
-        while (j < i && p.next != null) {
+        while (j < i && p != null) {
             j++;
             p = p.next;
         }
@@ -137,7 +141,7 @@ public class LkList<T> {
         int j = 0;
         Node<T> p = head;
         i--;
-        while (j < i && p.next != null) {
+        while (j < i && p != null) {
             j++;
             p = p.next;
         }
@@ -149,7 +153,7 @@ public class LkList<T> {
                 return 0;
             }
             p.next = q.next;
-            q = null;
+            q = null;//释放空间
             return 1;
         }
     }

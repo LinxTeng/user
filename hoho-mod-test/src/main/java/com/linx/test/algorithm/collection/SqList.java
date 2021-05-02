@@ -3,7 +3,8 @@ package com.linx.test.algorithm.collection;
 import java.security.InvalidParameterException;
 
 /**
- * 顺序表
+ * 顺序表.
+ * 存储结构包括：数组存储 和 链表存储。
  */
 public class SqList<T> {
    public T[] data;
