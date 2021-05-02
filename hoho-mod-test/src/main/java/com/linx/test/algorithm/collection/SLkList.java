@@ -2,7 +2,7 @@ package com.linx.test.algorithm.collection;
 
 /**
  * 单链表
- * 注意：新增、删除某个位置的值，p需要指向头节点，其他可指向第一个节点。
+ * 注意：新增、删除某个位置的值，p需要指向头节点: p = head，其他指向第一个节点: p = head.next
  * @param <T>
  */
 public class SLkList<T> {

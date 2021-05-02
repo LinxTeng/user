@@ -1,19 +1,26 @@
 package com.linx.test.algorithm.collection;
 
 import java.security.InvalidParameterException;
+import java.util.Arrays;
 
 /**
  * 顺序表.
  * 存储结构包括：数组存储 和 链表存储。
  */
 public class SqList<T> {
-   public T[] data;
+   public Object[] data;
    public int length;
 
    public SqList(T[] data) {
        this.data = data;
        this.length = data.length;
    }
+
+    public SqList(int i) {
+        this.data = new Object[i];
+        this.length = 0;
+    }
+
     /**
      * 是否为空
      * @return
