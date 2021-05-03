@@ -1,9 +1,9 @@
-package com.linx.test.algorithm.practise;
+package com.linx.test.algorithm.collection;
 
 /**
  * 链表和数组结合，用来表示行列式。本类表示：两个行列式进行关联得到关联后的行列式
  */
-public class HList {
+public class RCList {
     int row, col;
     Node head;
 
@@ -18,13 +18,13 @@ public class HList {
         }
     }
 
-    public HList() {
+    public RCList() {
         row = 0; col = 0;
         head = new Node();
         head.next = null;
     }
 
-    public HList(int[][] h) {
+    public RCList(int[][] h) {
         head = new Node();
         row = h.length; col = h[0].length;
         Node r = head.next = null;
@@ -60,9 +60,9 @@ public class HList {
      * @param a
      * @param b
      */
-    public static HList linkTable(HList a, HList b, int i , int j) {
+    public static RCList linkTable(RCList a, RCList b, int i , int j) {
         Node p, q;
-        HList h = new HList();
+        RCList h = new RCList();
         h.row = 0;
         h.col = a.col + b.col;
         Node r = h.head;//尾节点。
@@ -93,12 +93,12 @@ public class HList {
 
     public static void main(String[] args) {
         int[][] value1 = {{1, 2, 3}, {2, 3, 3}, {1, 1, 1}};
-        HList h1 = new HList(value1);
+        RCList h1 = new RCList(value1);
 
         int[][] value2 = {{3, 5}, {1, 6}, {3, 4}};
-        HList h2 = new HList(value2);
+        RCList h2 = new RCList(value2);
 
-        HList hList = HList.linkTable(h1, h2, 2, 0);
-        hList.display();
+        RCList RCList = linkTable(h1, h2, 2, 0);
+        RCList.display();
     }
 }

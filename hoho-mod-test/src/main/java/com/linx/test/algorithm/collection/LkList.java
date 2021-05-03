@@ -5,32 +5,20 @@ package com.linx.test.algorithm.collection;
  * 注意：新增、删除某个位置的值，p需要指向头节点: p = head，其他指向第一个节点: p = head.next
  * @param <T>
  */
-public class SLkList<T> {
-    Node<T> head; // 头节点
+public class LkList<T> {
+    public Node<T> head; // 头节点
 
-    private static class Node<T> { //链表节点
-        private T data;
-        private Node<T> next;//后继节点
+    public static class Node<T> { //链表节点
+        public T data;
+        public Node<T> next;//后继节点
     }
 
-    public SLkList() {//建立一个空链表
+    public LkList() {//建立一个空链表
         head = new Node<>();
         head.next = null;
     }
 
-    public void LkListF(T[] list) {
-        //头插入法建表
-        head = new Node<>();//创建头节点
-        head.next = null;
-        for (int i = 0; i < list.length; i++) {
-            Node<T> node = new Node();//新建节点
-            node.data = list[i];
-            node.next = head.next;
-            head.next = node;
-        }
-    }
-
-    public SLkList(T[] list) {
+    public LkList(T[] list) {
         //尾插入法建表
         head = new Node<>();//创建头节点
         Node<T> end = head;//end始终指向尾节点，开始时指向头节点
@@ -43,6 +31,23 @@ public class SLkList<T> {
         end.next = null;
     }
 
+    /** -------------------------------------------------------------------- */
+    public void SLkList(T[] list) {
+        //头插入法建表
+        head = new Node<>();//创建头节点
+        head.next = null;
+        for (int i = 0; i < list.length; i++) {
+            Node<T> node = new Node();//新建节点
+            node.data = list[i];
+            node.next = head.next;
+            head.next = node;
+        }
+    }
+
+    /**
+     * 判断是否为空
+     * @return
+     */
     public boolean isEmpty() {
         return head.next == null;
     }

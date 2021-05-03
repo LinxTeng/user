@@ -6,6 +6,8 @@ public class SqListPractise {
     /**
      * 有一个顺序表L,假设元素类型都为整型并且所有元素均不相等。
      * 设计一个算法，以第一个元素为分界线，将所有小于它的元素移到该元素的前面，将所有大于它的元素移动到该元素的后面
+     *
+     * 时间复杂度：O(n)
      */
     private void move(SqList<Integer> list) {
         Integer pivot = (Integer) list.data[0];

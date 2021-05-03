@@ -3,13 +3,13 @@ package com.linx.test.algorithm.collection;
 /**
  * 双链表
  */
-public class DLKList<T> {
-    Node<T> head; // 头节点
+public class DLkList<T> {
+    public Node<T> head; // 头节点
 
     private static class Node<T> { //链表节点
-        private T data;
-        private Node<T> prior;
-        private Node<T> next;//后继节点
+        public T data;
+        public Node<T> prior;
+        public Node<T> next;//后继节点
     }
 
     //头插法
@@ -29,7 +29,7 @@ public class DLKList<T> {
     }
 
     //尾插法
-    public DLKList(T[] list) {
+    public DLkList(T[] list) {
         Node<T> head = new Node<>();
         head.prior = head.next = null;
         Node<T> end = head;//尾节点
@@ -42,6 +42,7 @@ public class DLKList<T> {
         }
         end.next = null;//尾节点next域置为null
     }
+
 
     //在i位置上插入值为e的元素。
     public int insert(int i, T element) {
