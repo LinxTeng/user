@@ -18,6 +18,14 @@ public class LkList<T> {
         head.next = null;
     }
 
+    /**
+     *
+     * 尾插法的几个要点：
+     * 1、首先定义尾结点关联头结点
+     * 2、结点加进来后，注意移动尾结点到当前结点。
+     * 3、最后尾结点的next需要设置为null
+     * @param list
+     */
     public LkList(T[] list) {
         //尾插入法建表
         head = new Node<>();//创建头节点
@@ -111,14 +119,20 @@ public class LkList<T> {
         }
     }
 
-    // 销毁单链表，从头节点开始一个一个释放
+    /** 销毁单链表，从头节点开始一个一个释放
+     *
+     * 注意：1、头结点不一定说data没有值时才可以为头结点，实际当一个节点不再使用时就可以充当头节点了。也就是说在
+     * 链式结构中头结点不是固定不变的。
+     * 2、在删除移动时头结点是保持不变的。
+    */
     public void destroyList() {
-        Node<T> q = head.next;
+        Node<T> p = head; Node<T> q = head.next;
         while (q != null) {
-            head = null; //释放头节点。
-            head = q; //下一个节点变为头节点
-            q = head.next;
+            p = null; //释放头节点。
+            p = q; //下一个节点变为头节点
+            q = p.next;
         }
+        p = null;
     }
 
     // 在i位置上插入一个值，这个是逻辑序位，意味着插入后，i位置刚好是这个值。
