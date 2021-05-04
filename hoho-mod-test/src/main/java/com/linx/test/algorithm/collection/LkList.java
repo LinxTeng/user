@@ -3,6 +3,11 @@ package com.linx.test.algorithm.collection;
 /**
  * 单链表
  * 注意：新增、删除某个位置的值，p需要指向头节点: p = head，其他指向第一个节点: p = head.next
+ *
+ * 尾插法的几个要点：
+ *   1、首先定义一个尾结点关联头结点
+ *   2、然后结点加进来后，移动尾结点到当前结点
+ *   3、最后一行尾结点的next需要设置为null
  * @param <T>
  */
 public class LkList<T> {
@@ -20,10 +25,7 @@ public class LkList<T> {
 
     /**
      *
-     * 尾插法的几个要点：
-     * 1、首先定义尾结点关联头结点
-     * 2、结点加进来后，注意移动尾结点到当前结点。
-     * 3、最后尾结点的next需要设置为null
+     * 尾插法建表
      * @param list
      */
     public LkList(T[] list) {

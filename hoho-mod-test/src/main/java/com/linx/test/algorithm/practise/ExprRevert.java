@@ -11,6 +11,12 @@ import com.linx.test.algorithm.collection.SqStack;
  * 比如：a + b * c - d / e  => a b c * + d e / -
  *
  * 思路：右边的运算符如果小于左边的运算符时，需要出栈。出栈意味着会先行计算。也就是说优先级越高越快出栈
+ *
+ * 使用到的技巧：如何从左到右将数字字符转化为实际的数字：每移动一位则前一个数字乘以10。
+ * result = 0;
+ * for (int i = 0; i < 10 ; i++) {
+ *     result = result * 10 + data[i] - '0'
+ * }
  */
 public class ExprRevert {
     LkStack<Integer> stack;
